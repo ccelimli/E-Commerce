@@ -26,7 +26,20 @@ public class UserServiceImp implements UserService {
 
     @Override
     public DataResult<GetUserByIdResponse> createUser(CreateUserRequest createUserRequest) {
-        return null;
+        try {
+            User user = this._modelMapperService
+                    .forRequest()
+                    .map(createUserRequest, User.class);
+            this._userRepository.save(user);
+
+            GetUserByIdResponse getUserByIdResponse = this._modelMapperService
+                    .forResponse()
+                    .map(user, GetUserByIdResponse.class);
+
+            return new SuccessDataResult<>(message.UserAdded.getMessage(), getUserByIdResponse);
+        } catch (Exception error) {
+            return new ErrorDataResult<>(error.getMessage());
+        }
     }
 
     @Override
@@ -67,8 +80,8 @@ public class UserServiceImp implements UserService {
     public Result deleteUser(Long id) {
         try {
             this._userRepository.deleteById(id);
-            return new ErrorResult();
-        }catch (Exception error){
+            return new ErrorResult(message.UserDeleted.getMessage());
+        } catch (Exception error) {
             return new ErrorResult(error.getMessage());
         }
     }
@@ -76,11 +89,17 @@ public class UserServiceImp implements UserService {
     @Override
     public DataResult<GetUserByIdResponse> updateUser(UpdateUserRequest updateUserRequest) {
         try {
-            User user=this._modelMapperService.forRequest().map(updateUserRequest,User.class);
+            User user = this._modelMapperService
+                    .forRequest()
+                    .map(updateUserRequest, User.class);
             this._userRepository.save(user);
-            GetUserByIdResponse getUserByIdResponse= this._modelMapperService.forResponse().map(user, GetUserByIdResponse.class);
+
+            GetUserByIdResponse getUserByIdResponse = this._modelMapperService
+                    .forResponse()
+                    .map(user, GetUserByIdResponse.class);
+
             return new SuccessDataResult<>(message.UserUpdated.getMessage(), getUserByIdResponse);
-        }catch (Exception error){
+        } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
         }
     }
