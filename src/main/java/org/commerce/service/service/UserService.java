@@ -15,5 +15,5 @@ public interface UserService {
     DataResult<GetUserByIdResponse> getUserById(Long id);
     Result deactiveUser(Long id);
     Result deleteUser(Long id);
-    DataResult<GetUserByIdResponse> updateUser(UpdateUserRequest updateUserRequest);
+    DataResult<GetUserByIdResponse> updateUser(Long id,UpdateUserRequest updateUserRequest);
 }

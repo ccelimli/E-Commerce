@@ -9,13 +9,6 @@ public enum message {
     UserListed("Kullanıcı Listelendi.");
 
     //
-
-
-
-
-
-
-
     private final String message;
     message(String message){
         this.message=message;
@@ -24,7 +17,5 @@ public enum message {
     public String getMessage(){
         return this.message;
     }
-
-
 }
 

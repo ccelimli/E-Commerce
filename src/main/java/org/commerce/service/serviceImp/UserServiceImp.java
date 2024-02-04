@@ -8,6 +8,7 @@ import org.commerce.model.dto.Response.GetUserByIdResponse;
 import org.commerce.repository.UserRepository;
 import org.commerce.service.constant.message;
 import org.commerce.service.service.UserService;
+import org.commerce.utilities.exception.userException.UserNotFoundException;
 import org.commerce.utilities.mapper.ModelMapperService;
 import org.commerce.utilities.results.*;
 import org.springframework.stereotype.Service;
@@ -62,9 +63,12 @@ public class UserServiceImp implements UserService {
     @Override
     public DataResult<GetUserByIdResponse> getUserById(Long id) {
         try {
+            User user=this.findUserById(id);
+
             GetUserByIdResponse getUserByIdResponse = this._modelMapperService
                     .forResponse()
-                    .map(this._userRepository.findById(id), GetUserByIdResponse.class);
+                    .map(user, GetUserByIdResponse.class);
+
             return new SuccessDataResult<>(message.UserListed.getMessage(), getUserByIdResponse);
         } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
@@ -87,20 +91,29 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public DataResult<GetUserByIdResponse> updateUser(UpdateUserRequest updateUserRequest) {
+    public DataResult<GetUserByIdResponse> updateUser(Long id,UpdateUserRequest updateUserRequest) {
         try {
-            User user = this._modelMapperService
+            User user=this.findUserById(id);
+            User updatedUser = this._modelMapperService
                     .forRequest()
                     .map(updateUserRequest, User.class);
-            this._userRepository.save(user);
+            updatedUser.setId(user.getId());
+            updatedUser.setEmail(user.getEmail());
+            this._userRepository.save(updatedUser);
 
             GetUserByIdResponse getUserByIdResponse = this._modelMapperService
                     .forResponse()
-                    .map(user, GetUserByIdResponse.class);
+                    .map(updatedUser, GetUserByIdResponse.class);
 
             return new SuccessDataResult<>(message.UserUpdated.getMessage(), getUserByIdResponse);
         } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
         }
+    }
+
+    private User findUserById(Long id){
+        return this._userRepository
+                .findById(id)
+                .orElseThrow(()->new UserNotFoundException("User could not be found by following id: "+id));
     }
 }

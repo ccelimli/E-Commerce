@@ -38,8 +38,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DataResult<GetUserByIdResponse>> updateUser(@RequestBody UpdateUserRequest updateUserRequest){
-        return ResponseEntity.ok(_userService.updateUser(updateUserRequest));
+    public ResponseEntity<DataResult<GetUserByIdResponse>> updateUser(@PathVariable Long id,@RequestBody UpdateUserRequest updateUserRequest){
+        return ResponseEntity.ok(_userService.updateUser(id,updateUserRequest));
     }
 
     @PatchMapping("/{id}")
