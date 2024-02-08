@@ -1,6 +1,6 @@
 package org.commerce.service.constant;
 
-public enum message {
+public enum Message {
     //User
     UserAdded("Kullanıcı Eklendi."),
     UserDeleted("Kullanıcı Silindi."),
@@ -10,7 +10,7 @@ public enum message {
 
     //
     private final String message;
-    message(String message){
+    Message(String message){
         this.message=message;
     }
 

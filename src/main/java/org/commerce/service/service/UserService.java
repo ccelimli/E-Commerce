@@ -12,8 +12,8 @@ import java.util.List;
 public interface UserService {
     DataResult<GetUserByIdResponse> createUser(CreateUserRequest createUserRequest);
     DataResult<List<GetAllUserResponse>> getAllUsers();
-    DataResult<GetUserByIdResponse> getUserById(Long id);
+    DataResult<GetUserByIdResponse> getUserByEmail(String email);
     Result deactiveUser(Long id);
     Result deleteUser(Long id);
-    DataResult<GetUserByIdResponse> updateUser(Long id,UpdateUserRequest updateUserRequest);
+    DataResult<GetUserByIdResponse> updateUser(String email,UpdateUserRequest updateUserRequest);
 }
