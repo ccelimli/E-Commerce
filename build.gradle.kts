@@ -22,7 +22,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.modelmapper:modelmapper:2.1.1")
     implementation("mysql:mysql-connector-java:5.1.6")
-
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("io.springfox:springfox-swagger2:3.0.0")
+    implementation("io.springfox:springfox-swagger-ui:3.0.0")
+    implementation("javax.servlet:javax.servlet-api:4.0.1")
     implementation("org.modelmapper:modelmapper:3.2.0")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")

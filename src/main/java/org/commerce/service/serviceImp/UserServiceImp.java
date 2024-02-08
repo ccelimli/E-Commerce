@@ -6,7 +6,7 @@ import org.commerce.model.dto.Request.UpdateUserRequest;
 import org.commerce.model.dto.Response.GetAllUserResponse;
 import org.commerce.model.dto.Response.GetUserByIdResponse;
 import org.commerce.repository.UserRepository;
-import org.commerce.service.constant.message;
+import org.commerce.service.constant.Message;
 import org.commerce.service.service.UserService;
 import org.commerce.utilities.exception.userException.UserNotFoundException;
 import org.commerce.utilities.mapper.ModelMapperService;
@@ -37,7 +37,7 @@ public class UserServiceImp implements UserService {
                     .forResponse()
                     .map(user, GetUserByIdResponse.class);
 
-            return new SuccessDataResult<>(message.UserAdded.getMessage(), getUserByIdResponse);
+            return new SuccessDataResult<>(Message.UserAdded.getMessage(), getUserByIdResponse);
         } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
         }
@@ -54,22 +54,22 @@ public class UserServiceImp implements UserService {
                             .map(user, GetAllUserResponse.class))
                     .toList();
 
-            return new SuccessDataResult<>(message.UsersListed.getMessage(), getAllUserResponseList);
+            return new SuccessDataResult<>(Message.UsersListed.getMessage(), getAllUserResponseList);
         } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
         }
     }
 
     @Override
-    public DataResult<GetUserByIdResponse> getUserById(Long id) {
+    public DataResult<GetUserByIdResponse> getUserByEmail(String email) {
         try {
-            User user=this.findUserById(id);
+            User user = this.findUserByEmail(email);
 
             GetUserByIdResponse getUserByIdResponse = this._modelMapperService
                     .forResponse()
                     .map(user, GetUserByIdResponse.class);
 
-            return new SuccessDataResult<>(message.UserListed.getMessage(), getUserByIdResponse);
+            return new SuccessDataResult<>(Message.UserListed.getMessage(), getUserByIdResponse);
         } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
         }
@@ -84,16 +84,16 @@ public class UserServiceImp implements UserService {
     public Result deleteUser(Long id) {
         try {
             this._userRepository.deleteById(id);
-            return new ErrorResult(message.UserDeleted.getMessage());
+            return new ErrorResult(Message.UserDeleted.getMessage());
         } catch (Exception error) {
             return new ErrorResult(error.getMessage());
         }
     }
 
     @Override
-    public DataResult<GetUserByIdResponse> updateUser(Long id,UpdateUserRequest updateUserRequest) {
+    public DataResult<GetUserByIdResponse> updateUser(String email, UpdateUserRequest updateUserRequest) {
         try {
-            User user=this.findUserById(id);
+            User user = this.findUserByEmail(email);
             User updatedUser = this._modelMapperService
                     .forRequest()
                     .map(updateUserRequest, User.class);
@@ -105,15 +105,14 @@ public class UserServiceImp implements UserService {
                     .forResponse()
                     .map(updatedUser, GetUserByIdResponse.class);
 
-            return new SuccessDataResult<>(message.UserUpdated.getMessage(), getUserByIdResponse);
+            return new SuccessDataResult<>(Message.UserUpdated.getMessage(), getUserByIdResponse);
         } catch (Exception error) {
             return new ErrorDataResult<>(error.getMessage());
         }
     }
 
-    private User findUserById(Long id){
-        return this._userRepository
-                .findById(id)
-                .orElseThrow(()->new UserNotFoundException("User could not be found by following id: "+id));
+    private User findUserByEmail(String email) {
+        return this._userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User couldn't be found by following email: " + email));
     }
 }

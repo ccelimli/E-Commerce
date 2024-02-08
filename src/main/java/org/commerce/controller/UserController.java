@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
-    private UserService _userService;
+    private final UserService _userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -23,33 +23,34 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<DataResult<List<GetAllUserResponse>>> getAllUser(){
+    public ResponseEntity<DataResult<List<GetAllUserResponse>>> getAllUser() {
         return ResponseEntity.ok(_userService.getAllUsers());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<DataResult<GetUserByIdResponse>> getUserById(@PathVariable("id") Long id){
-        return ResponseEntity.ok(_userService.getUserById(id));
+    @GetMapping("/{email}")
+    public ResponseEntity<DataResult<GetUserByIdResponse>> getUserById(@PathVariable("email") String email) {
+        return ResponseEntity.ok(_userService.getUserByEmail(email));
     }
 
     @PostMapping
-    public ResponseEntity<DataResult<GetUserByIdResponse>> createUser(@RequestBody CreateUserRequest createUserRequest){
+    public ResponseEntity<DataResult<GetUserByIdResponse>> createUser(@RequestBody CreateUserRequest createUserRequest) {
         return ResponseEntity.ok(_userService.createUser(createUserRequest));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<DataResult<GetUserByIdResponse>> updateUser(@PathVariable Long id,@RequestBody UpdateUserRequest updateUserRequest){
-        return ResponseEntity.ok(_userService.updateUser(id,updateUserRequest));
+    @PutMapping("/{email}")
+    public ResponseEntity<DataResult<GetUserByIdResponse>> updateUser(@PathVariable("email") String email,
+                                                                      @RequestBody UpdateUserRequest updateUserRequest) {
+        return ResponseEntity.ok(_userService.updateUser(email, updateUserRequest));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> deactiveUser(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deactiveUser(@PathVariable("id") Long id) {
         _userService.deactiveUser(id);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         _userService.deleteUser(id);
         return ResponseEntity.ok().build();
     }
