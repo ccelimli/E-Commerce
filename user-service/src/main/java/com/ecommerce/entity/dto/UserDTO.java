@@ -1,5 +1,7 @@
 package com.ecommerce.entity.dto;
 
+import com.ecommerce.entity.enums.Gender;
+
 /**
  * Copyright (c) 2024
  * All rights reserved.
@@ -15,6 +17,7 @@ public record UserDTO (
     String email,
     String username,
     String address,
-    String postCode
+    String postCode,
+    Gender gender
 ){
 }

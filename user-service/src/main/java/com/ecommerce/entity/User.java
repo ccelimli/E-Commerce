@@ -1,5 +1,7 @@
 package com.ecommerce.entity;
 
+import com.ecommerce.entity.enums.Gender;
+import com.ecommerce.entity.enums.Status;
 import com.ecommerce.utilities.general.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,4 +42,8 @@ public class User extends BaseEntity {
     private String address;
     @Column(name="post_code", nullable = false)
     private String postCode;
+    @Column(name = "gender", nullable = false)
+    private Gender gender;
+    @Column(name = "status", nullable = false)
+    private Status status;
 }

@@ -8,7 +8,8 @@ import com.ecommerce.entity.enums.Gender;
  *
  * @author Çağatay Çelimli
  */
-public record UserSaveRequest(
+public record UserUpdateRequest(
+        Long id,
         String firstName,
         String middleName,
         String lastName,

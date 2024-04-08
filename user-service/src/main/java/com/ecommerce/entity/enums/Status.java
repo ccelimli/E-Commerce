@@ -6,7 +6,8 @@ package com.ecommerce.entity.enums;
  *
  * @author Çağatay Çelimli
  */
-public enum Language {
-    EN,
-    TR
+public enum Status
+{
+    ACTIVE,
+    DEACTIVE
 }
