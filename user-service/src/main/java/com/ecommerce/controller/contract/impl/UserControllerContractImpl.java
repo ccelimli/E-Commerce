@@ -1,10 +1,13 @@
 package com.ecommerce.controller.contract.impl;
 
+import com.ecommerce.constant.RegexConstants;
 import com.ecommerce.controller.contract.UserControllerContact;
+import com.ecommerce.entity.User;
 import com.ecommerce.entity.dto.UserDTO;
 import com.ecommerce.entity.request.UserSaveRequest;
 import com.ecommerce.entity.request.UserUpdateRequest;
 import com.ecommerce.service.UserService;
+import com.ecommerce.utilities.helper.BusinessRules.RegularExpression;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,7 @@ public class UserControllerContractImpl implements UserControllerContact {
 
     @Override
     public UserDTO register(UserSaveRequest userSaveRequest) {
+        RegularExpression.controlSaveRequest(userSaveRequest);
         return null;
     }
 
