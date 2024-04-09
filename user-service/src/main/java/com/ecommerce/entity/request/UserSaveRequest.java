@@ -1,5 +1,6 @@
 package com.ecommerce.entity.request;
 
+import com.ecommerce.constant.CountryCode;
 import com.ecommerce.entity.enums.Gender;
 
 /**
@@ -12,7 +13,7 @@ public record UserSaveRequest(
         String firstName,
         String middleName,
         String lastName,
-        String countryCode,
+        CountryCode countryCode,
         String phoneNumber,
         String email,
         String username,
