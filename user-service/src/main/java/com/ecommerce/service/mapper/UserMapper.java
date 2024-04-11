@@ -23,7 +23,7 @@ public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     @Mapping(target="status", constant = "ACTIVE")
-    @Mapping(target = "phoneNumber", expression = "java(userSaveRequest.countryCode() + userSaveRequest.phoneNumber())")
+    @Mapping(target = "phoneNumber", expression = "java(userSaveRequest.countryCode().getContext() + userSaveRequest.phoneNumber())")
     User convertToEntity(UserSaveRequest userSaveRequest);
 
     UserDTO convertToDTO(User user);

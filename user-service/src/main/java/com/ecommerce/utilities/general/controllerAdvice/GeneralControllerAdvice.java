@@ -1,9 +1,6 @@
 package com.ecommerce.utilities.general.controllerAdvice;
 
-import com.ecommerce.utilities.exceptions.BadRequestException;
-import com.ecommerce.utilities.exceptions.BusinessException;
-import com.ecommerce.utilities.exceptions.ItemNotFoundException;
-import com.ecommerce.utilities.exceptions.ServiceUnavailableException;
+import com.ecommerce.utilities.exceptions.*;
 import com.ecommerce.utilities.general.entity.RestResponse;
 import com.ecommerce.utilities.general.messageService.GeneralErrorMessages;
 import lombok.RequiredArgsConstructor;
@@ -53,18 +50,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler
-    public final ResponseEntity<Object> handleRunTimeExceptions(BusinessException e, WebRequest request) {
-
-        String message = e.getBaseErrorMessage().getMessage();
-        String description = request.getDescription(false);
-
-        var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
-        var restResponse = RestResponse.error(generalErrorMessages);
-        return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
-    public final ResponseEntity<Object> handleRunTimeExceptions(BadRequestException e, WebRequest request) {
+    public final ResponseEntity<Object> handleBadRequestExceptions(BadRequestException e, WebRequest request) {
 
         String message = e.getBaseErrorMessage().getMessage();
         String description = request.getDescription(false);
@@ -75,7 +61,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler
-    public final ResponseEntity<Object> handleRunTimeExceptions(ServiceUnavailableException e, WebRequest request) {
+    public final ResponseEntity<Object> handleServiceUnavailableExceptions(ServiceUnavailableException e, WebRequest request) {
 
         String message = e.getBaseErrorMessage().getMessage();
         String description = request.getDescription(false);
@@ -84,4 +70,28 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         var restResponse = RestResponse.error(generalErrorMessages);
         return new ResponseEntity<>(restResponse, HttpStatus.SERVICE_UNAVAILABLE);
     }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleAlreadyExistsExceptions(AlreadyExistsException e, WebRequest request) {
+
+        String message = e.getBaseErrorMessage().getMessage();
+        String description = request.getDescription(false);
+
+        var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
+        var restResponse = RestResponse.error(generalErrorMessages);
+        return new ResponseEntity<>(restResponse, HttpStatus.ALREADY_REPORTED);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleRunTimeExceptions(BusinessException e, WebRequest request) {
+
+        String message = e.getBaseErrorMessage().getMessage();
+        String description = request.getDescription(false);
+
+        var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
+        var restResponse = RestResponse.error(generalErrorMessages);
+        return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
+    }
+
+
 }

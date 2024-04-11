@@ -204,13 +204,13 @@ public enum CountryCode {
     ZAMBIA("+260"),
     ZIMBABWE("+263");
 
-    private String context;
+    private final String context;
 
     CountryCode(String context) {
         this.context = context;
     }
 
     public String getContext() {
-        return context;
+        return this.context;
     }
 }

@@ -1,5 +1,6 @@
 package com.ecommerce.entity.dto;
 
+import com.ecommerce.constant.CountryCode;
 import com.ecommerce.entity.enums.Gender;
 
 /**
@@ -9,15 +10,18 @@ import com.ecommerce.entity.enums.Gender;
  * @author Çağatay Çelimli
  */
 public record UserDTO (
-    Long id,
-    String firstName,
-    String middleName,
-    String lastName,
-    String phoneNumber,
-    String email,
-    String username,
-    String address,
-    String postCode,
-    Gender gender
+        Long id,
+        String firstName,
+        String middleName,
+        String lastName,
+        String phoneNumber,
+        String email,
+        String username,
+        String password,
+        String city,
+        String district,
+        String address,
+        String postCode,
+        Gender gender
 ){
 }

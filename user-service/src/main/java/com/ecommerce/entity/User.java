@@ -45,5 +45,6 @@ public class User extends BaseEntity {
     @Column(name = "gender", nullable = false)
     private Gender gender;
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 }
