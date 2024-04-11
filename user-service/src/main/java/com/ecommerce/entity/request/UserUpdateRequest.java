@@ -19,6 +19,8 @@ public record UserUpdateRequest(
         String email,
         String username,
         String password,
+        String city,
+        String district,
         String address,
         String postCode,
         Gender gender

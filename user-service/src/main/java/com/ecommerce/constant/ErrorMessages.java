@@ -16,18 +16,18 @@ public enum ErrorMessages implements BaseErrorMessage {
     NOT_VALID_PHONE_NUMBER("Not Valid Phone Number!"),
     NOT_VALID_EMAIL("Not Valid Email!"),
     NOT_START_ZERO_PHONE_NUMBER("Phone number does not start 0(zero)!"),
+    NOT_NULL_PHONE_NUMBER("Phone number cannot be null "),
+    ALREADY_EXCEPTION_USER("User already exists!");
 
-    NOT_NULL_PHONE_NUMBER("Phone number cannot be null ");
+    private final String context;
 
-    private String message;
-
-    ErrorMessages(String message) {
-        this.message = message;
+    ErrorMessages(String context) {
+        this.context = context;
     }
 
 
     @Override
     public String getMessage() {
-        return null;
+        return this.context;
     }
 }

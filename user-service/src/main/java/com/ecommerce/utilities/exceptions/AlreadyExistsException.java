@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  * @author Çağatay Çelimli
  */
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class BadRequestException extends BusinessException {
-    public BadRequestException(BaseErrorMessage baseErrorMessage) {
+@ResponseStatus(HttpStatus.ALREADY_REPORTED)
+public class AlreadyExistsException extends BusinessException{
+    public AlreadyExistsException(BaseErrorMessage baseErrorMessage) {
         super(baseErrorMessage);
     }
 }
