@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -35,16 +37,11 @@ public class User extends BaseEntity {
     @Column(name="password", nullable = false)
     private String password;
     @Column(name = "city", nullable = false)
-    private String city;
-    @Column(name = "district", nullable = false)
-    private String district;
-    @Column(name = "address", nullable = false)
-    private String address;
-    @Column(name="post_code", nullable = false)
-    private String postCode;
-    @Column(name = "gender", nullable = false)
     private Gender gender;
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<Address> addresses;
 }

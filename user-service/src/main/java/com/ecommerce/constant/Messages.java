@@ -12,7 +12,15 @@ import lombok.Getter;
 
 @Getter
 public enum Messages {
-    USER_DELETED("Removed User from database");
+    //Address
+    ADDRESS_DELETED("Removed Address From Database"),
+
+    //System
+    SUCCESSFULLY_DEACTIVE("Successfully Deactive."),
+    SUCCESSFULLY_ACTIVE("Successfully Active."),
+    //User
+    USER_DELETED("Removed User From Database");
+
     private final String message;
 
     Messages(String message) {

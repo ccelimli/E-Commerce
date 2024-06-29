@@ -12,9 +12,15 @@ import com.ecommerce.service.UserEntityService;
 import com.ecommerce.service.mapper.UserMapper;
 import com.ecommerce.utilities.exceptions.AlreadyExistsException;
 import com.ecommerce.utilities.exceptions.ItemNotFoundException;
+import com.ecommerce.utilities.exceptions.ServiceUnavailableException;
+import com.ecommerce.utilities.exceptions.UserIsNotActiveException;
 import com.ecommerce.utilities.helper.BusinessRules.RegularExpression;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,10 +31,13 @@ import java.util.List;
  * @author Çağatay Çelimli
  */
 @Service
+@Slf4j
 @RequiredArgsConstructor
+@Transactional
 public class UserControllerContractImpl implements UserControllerContact {
 
     private final UserEntityService userEntityService;
+    private static final Logger logger= LoggerFactory.getLogger(UserControllerContractImpl.class);
 
     @Override
     public UserDTO register(UserSaveRequest userSaveRequest) {
@@ -42,6 +51,10 @@ public class UserControllerContractImpl implements UserControllerContact {
     @Override
     public UserDTO updateUser(UserUpdateRequest userUpdateRequest) {
         User user=this.userEntityService.findByIdWithControl(userUpdateRequest.id());
+        if (user.getStatus()==Status.DEACTIVE){
+            logger.warn("The user wanted update is not active! email: {}", userUpdateRequest.email());
+            throw new UserIsNotActiveException(ErrorMessages.USER_IS_NOT_ACTIVE);
+        }
         RegularExpression.controlUpdateRequest(userUpdateRequest);
         UserMapper.INSTANCE.updateUser(user,userUpdateRequest);
         return UserMapper.INSTANCE.convertToDTO(user);
@@ -66,7 +79,8 @@ public class UserControllerContractImpl implements UserControllerContact {
     @Override
     public UserDTO findById(Long id) {
         User user=this.userEntityService.findByIdWithControl(id);
-        if (user.getStatus()==Status.DEACTIVE){
+        if (user.getStatus() == Status.DEACTIVE){
+            logger.warn("User not active or do not found id: {}", id);
             throw new ItemNotFoundException(ErrorMessages.NOT_FOUND_USER);
         }
         return UserMapper.INSTANCE.convertToDTO(user);
