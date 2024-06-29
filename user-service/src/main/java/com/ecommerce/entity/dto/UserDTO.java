@@ -3,6 +3,8 @@ package com.ecommerce.entity.dto;
 import com.ecommerce.constant.CountryCode;
 import com.ecommerce.entity.enums.Gender;
 
+import java.util.List;
+
 /**
  * Copyright (c) 2024
  * All rights reserved.
@@ -17,11 +19,7 @@ public record UserDTO (
         String phoneNumber,
         String email,
         String username,
-        String password,
-        String city,
-        String district,
-        String address,
-        String postCode,
+        List<AddressDTO> addressDTOList
         Gender gender
 ){
 }
