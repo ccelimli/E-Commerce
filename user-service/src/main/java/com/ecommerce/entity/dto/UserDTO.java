@@ -19,7 +19,7 @@ public record UserDTO (
         String phoneNumber,
         String email,
         String username,
-        List<AddressDTO> addressDTOList
+        List<AddressDTO> addressDTOList,
         Gender gender
 ){
 }

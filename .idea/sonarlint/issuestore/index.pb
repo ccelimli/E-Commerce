@@ -47,3 +47,9 @@ t
 Duser-service/src/main/java/com/ecommerce/constant/ErrorMessages.java,d\3\d380369bc3540cce296f0d1e01d4308fbd3927d2
 o
 ?user-service/src/main/java/com/ecommerce/constant/Messages.java,7\3\736bedad207281d4cf6e7fe8a957a183403f3ab2
+q
+Auser-service/src/main/java/com/ecommerce/entity/enums/Status.java,0\a\0af8f5e295c484b0d3f39b624c6c59326479a0d5
+z
+Juser-service/src/main/java/com/ecommerce/controller/AddressController.java,6\1\61907d967e9e87f7ad554b5db6a5bdc53b1b0c47
+}
+Muser-service/src/test/java/com/ecommerce/controller/contract/TestSupport.java,8\6\86c602d421bb95e87e59f796d38987f2498171a3

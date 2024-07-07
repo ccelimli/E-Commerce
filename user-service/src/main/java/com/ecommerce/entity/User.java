@@ -3,13 +3,13 @@ package com.ecommerce.entity;
 import com.ecommerce.entity.enums.Gender;
 import com.ecommerce.entity.enums.Status;
 import com.ecommerce.utilities.general.entity.BaseEntity;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -36,12 +36,10 @@ public class User extends BaseEntity {
     private String username;
     @Column(name="password", nullable = false)
     private String password;
-    @Column(name = "city", nullable = false)
+    @Column(name = "gender", nullable = false)
     private Gender gender;
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Address> addresses;
 }

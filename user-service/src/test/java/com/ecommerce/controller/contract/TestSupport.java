@@ -14,21 +14,23 @@ import java.util.stream.IntStream;
  * @author Çağatay Çelimli
  */
 public class TestSupport {
-    public static List<UserDTO> generateUser(){
-        return IntStream.range(0,5).mapToObj(i->
-            new UserDTO(
-                    (long) i,
-                    "firstname",
-                    null,
-                    "lastname",
-                    "+905458952194",
-                    i+"@gmail.com",
-                    i+". kullanıcı",
-                    "Adana",
-                    "Seyhan",
-                    "Address",
-                    "01010",
-                    Gender.MALE)
-        ).collect(Collectors.toList());
+    public static List<UserDTO> generateUser() {
+//        return IntStream.range(0,5).mapToObj(i->
+//            new UserDTO(
+//                    (long) i,
+//                    "firstname",
+//                    null,
+//                    "lastname",
+//                    "+905458952194",
+//                    i+"@gmail.com",
+//                    i+". kullanıcı",
+//                    "Adana",
+//                    "Seyhan",
+//                    "Address",
+//                    "01010",
+//                    Gender.MALE)
+//        ).collect(Collectors.toList());
+//    }
+        return null;
     }
 }

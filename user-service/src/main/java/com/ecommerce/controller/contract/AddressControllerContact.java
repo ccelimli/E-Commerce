@@ -18,7 +18,7 @@ public interface AddressControllerContact {
     String delete(Long id) throws Exception;
     String deactive(Long id) throws Exception;
     String active(Long id) throws Exception;
-    List<AddressDTO> findAll();
-    AddressDTO findById(Long id);
-    List<AddressDTO> findByDeactive();
+    List<AddressDTO> findAll() throws Exception;
+    AddressDTO findById(Long id) throws Exception;
+    List<AddressDTO> findByDeactive() throws Exception;
 }
