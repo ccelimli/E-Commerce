@@ -1,10 +1,12 @@
 
-g	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8ê–˜©†2
-g	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8ê–˜©†2
-g	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8ê–˜©†2
-g	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8ê–˜©†2
-g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8ê–˜©†2
-[
-java:S1854b">Remove this useless assignment to local variable "addressDTO".(Ñô¤‰8õ–˜©†2
-L
-java:S1481b"/Remove this unused "addressDTO" local variable.(Ñô¤‰8õ–˜©†2
+	java:S112("FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$c5ce6cfa-ba6a-42b4-9677-62216f4ec713
+	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$332d9a70-e6af-4d3b-9c5a-d07246166317
+	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$8620de82-1372-4940-83bc-fe639a7c60a6
+	java:S112K"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$f686f9d8-dbbf-4d13-a218-ee3d8a518789
+	java:S112V"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$e203c496-6e5f-4be1-a181-7497cc0599da
+	java:S112c"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$415ce315-e257-4485-836d-2c54232295f5
+	java:S112m"FDefine and throw a dedicated exception instead of using a generic one.(•éÃ÷şÿÿÿÿ8éèµ‡2J$7f3d062b-5eb5-46e5-8279-dc986f9a3e36
+>
+java:S1181b"!Catch Exception instead of Error.(ê–½8Šç¨È‡2
+v
+java:S1128"TRemove this unused import 'com.ecommerce.controller.contract.UserControllerContact'.(şô²Ëúÿÿÿÿ8ç¨È‡2
