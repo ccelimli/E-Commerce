@@ -25,7 +25,6 @@ public class Address extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Address")
     @Id
     private Long id;
-
     @Column(name = "door_no", nullable = false)
     private String doorNo;
     @Column(name = "floor_no", nullable = false)
