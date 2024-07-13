@@ -1,9 +1,7 @@
 package com.ecommerce.service.mapper;
 
-import com.ecommerce.controller.contract.UserControllerContact;
 import com.ecommerce.entity.Address;
 import com.ecommerce.entity.dto.AddressDTO;
-import com.ecommerce.entity.dto.UserDTO;
 import com.ecommerce.entity.request.AddressSaveRequest;
 import com.ecommerce.entity.request.AddressUpdateRequest;
 import org.mapstruct.*;
@@ -21,8 +19,11 @@ import java.util.List;
 public interface AddressMapper {
     AddressMapper INSTANCE= Mappers.getMapper(AddressMapper.class);
 
+    @Mapping(target="status", constant = "ACTIVE")
+    @Mapping(target = "user.id", source = "userId")
     Address convertToEntity(AddressSaveRequest addressSaveRequest);
     Address update(@MappingTarget()Address address, AddressUpdateRequest addressUpdateRequest);
+    @Mapping(target = "userId", source = "user.id")
     AddressDTO convertToDto(Address address);
     List<AddressDTO> convertToDtoList(List<Address> addressList);
 

@@ -7,10 +7,15 @@ package com.ecommerce.entity.dto;
  * @author Çağatay Çelimli
  */
 public record AddressDTO(
+        Long id,
         Long userId,
-        String address,
+        String doorNo,
+        String floorNo,
+        String buildingNo,
+        String street,
         String district,
         String city,
         String country,
-        String postCode
+        String postCode,
+        String description
 ) {}
