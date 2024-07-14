@@ -3,6 +3,7 @@ package com.ecommerce.controller.contract;
 import com.ecommerce.entity.dto.UserDTO;
 import com.ecommerce.entity.request.UserSaveRequest;
 import com.ecommerce.entity.request.UserUpdateRequest;
+import com.ecommerce.utilities.general.entity.RestResponse;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface UserControllerContact
 {
-    UserDTO register(UserSaveRequest userSaveRequest);
+    RestResponse<UserDTO> register(UserSaveRequest userSaveRequest);
     UserDTO updateUser(UserUpdateRequest userUpdateRequest);
     String deleteUser(Long id);
     List<UserDTO> findAll();

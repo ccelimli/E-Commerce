@@ -14,6 +14,7 @@ import com.ecommerce.utilities.exceptions.AlreadyExistsException;
 import com.ecommerce.utilities.exceptions.ItemNotFoundException;
 import com.ecommerce.utilities.exceptions.ServiceUnavailableException;
 import com.ecommerce.utilities.exceptions.UserIsNotActiveException;
+import com.ecommerce.utilities.general.entity.RestResponse;
 import com.ecommerce.utilities.helper.BusinessRules.RegularExpression;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,12 +41,12 @@ public class UserControllerContractImpl implements UserControllerContact {
     private static final Logger logger= LoggerFactory.getLogger(UserControllerContractImpl.class);
 
     @Override
-    public UserDTO register(UserSaveRequest userSaveRequest) {
+    public RestResponse<UserDTO> register(UserSaveRequest userSaveRequest) {
         RegularExpression.controlSaveRequest(userSaveRequest);
         this.checkExistUser(userSaveRequest.username(),userSaveRequest.email());
         User user= UserMapper.INSTANCE.convertToEntity(userSaveRequest);
         user=this.userEntityService.save(user);
-        return UserMapper.INSTANCE.convertToDTO(user);
+        return RestResponse.result(UserMapper.INSTANCE.convertToDTO(user), Messages.USER_ADDED.getMessage(),true);
     }
 
     @Override

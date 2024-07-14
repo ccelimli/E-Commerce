@@ -8,9 +8,13 @@ package com.ecommerce.entity.request;
  */
 public record AddressUpdateRequest(
         Long id,
-        String address,
+        String doorNo,
+        String floorNo,
+        String buildingNo,
+        String street,
         String district,
         String city,
         String country,
-        String postCode
+        String postCode,
+        String description
 ) {}

@@ -27,7 +27,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<RestResponse<UserDTO>> register(@RequestBody UserSaveRequest userSaveRequest) {
-        return ResponseEntity.ok(RestResponse.of(this.userControllerContact.register(userSaveRequest)));
+        return ResponseEntity.ok(this.userControllerContact.register(userSaveRequest));
     }
 
     @PutMapping

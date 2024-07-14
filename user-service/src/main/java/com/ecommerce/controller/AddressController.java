@@ -42,17 +42,17 @@ public class AddressController {
 
    @DeleteMapping("/{id}")
    public ResponseEntity<RestResponse<String>> delete(@PathVariable Long id) throws Exception {
-      return ResponseEntity.ok(RestResponse.of(this.addressControllerContact.delete(id)));
+      return ResponseEntity.ok(RestResponse.message(this.addressControllerContact.delete(id)));
    }
 
    @PatchMapping("/deactive/{id}")
    public ResponseEntity<RestResponse<String>> deactive(@PathVariable Long id) throws Exception {
-      return ResponseEntity.ok(RestResponse.of(this.addressControllerContact.deactive(id)));
+      return ResponseEntity.ok(RestResponse.message(this.addressControllerContact.deactive(id)));
    }
 
    @PatchMapping("/active/{id}")
    public ResponseEntity<RestResponse<String>> active(@PathVariable Long id) throws Exception{
-      return ResponseEntity.ok(RestResponse.of(this.addressControllerContact.active(id)));
+      return ResponseEntity.ok(RestResponse.message(this.addressControllerContact.active(id)));
    }
 
    @GetMapping("/{id}")
