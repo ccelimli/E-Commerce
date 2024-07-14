@@ -20,6 +20,12 @@ public class RestResponse<T> {
     private boolean isSuccess;
     private String message;
 
+    public RestResponse(T data,String message, boolean isSuccess){
+        this.data = data;
+        this.message=message;
+        this.isSuccess = isSuccess;
+        this.responseDate = LocalDateTime.now();
+    }
     public RestResponse(T data, boolean isSuccess){
         this.data = data;
         this.isSuccess = isSuccess;
@@ -36,7 +42,7 @@ public class RestResponse<T> {
     }
     public RestResponse(){
         this.responseDate = LocalDateTime.now();
-    };
+    }
 
     public static <T> RestResponse<T> of(T t){
         return new RestResponse<>(t, true);
@@ -46,11 +52,19 @@ public class RestResponse<T> {
         return new RestResponse<>(t, false);
     }
 
+    public static <T> RestResponse<T> errorWithMessage(String message, boolean isSuccess ){
+        return new RestResponse<>(message,false);
+    }
+
     public static <T> RestResponse<T> empty(){
         return new RestResponse<>(null, true);
     }
     public static <T> RestResponse<T> message(String message){
         return new RestResponse<>(message, true);
+    }
+
+    public static <T> RestResponse<T> result(T t, String message, boolean isSuccess){
+        return new RestResponse<>(t, message,isSuccess);
     }
 }
 

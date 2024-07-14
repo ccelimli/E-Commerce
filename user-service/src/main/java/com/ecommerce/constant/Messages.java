@@ -18,7 +18,9 @@ public enum Messages {
     //System
     SUCCESSFULLY_DEACTIVE("Successfully Deactive."),
     SUCCESSFULLY_ACTIVE("Successfully Active."),
+
     //User
+    USER_ADDED("User Added To Database."),
     USER_DELETED("Removed User From Database");
 
     private final String message;

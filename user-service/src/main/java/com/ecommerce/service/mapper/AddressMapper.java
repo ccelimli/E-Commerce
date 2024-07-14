@@ -22,7 +22,7 @@ public interface AddressMapper {
     @Mapping(target="status", constant = "ACTIVE")
     @Mapping(target = "user.id", source = "userId")
     Address convertToEntity(AddressSaveRequest addressSaveRequest);
-    Address update(@MappingTarget()Address address, AddressUpdateRequest addressUpdateRequest);
+    Address update(@MappingTarget Address address, AddressUpdateRequest addressUpdateRequest);
     @Mapping(target = "userId", source = "user.id")
     AddressDTO convertToDto(Address address);
     List<AddressDTO> convertToDtoList(List<Address> addressList);
