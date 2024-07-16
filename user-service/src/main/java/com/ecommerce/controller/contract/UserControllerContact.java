@@ -15,12 +15,12 @@ import java.util.List;
  */
 public interface UserControllerContact
 {
-    RestResponse<UserDTO> register(UserSaveRequest userSaveRequest);
-    UserDTO updateUser(UserUpdateRequest userUpdateRequest);
-    String deleteUser(Long id);
-    List<UserDTO> findAll();
-    UserDTO findById(Long id);
-    UserDTO active(Long id);
-    UserDTO deactive(Long id);
-    List<UserDTO> findAllOfDeactives();
+    RestResponse<UserDTO> register(UserSaveRequest userSaveRequest) throws Exception;
+    RestResponse<UserDTO> updateUser(UserUpdateRequest userUpdateRequest) throws Exception;
+    RestResponse<String> deleteUser(Long id) throws Exception;
+    RestResponse<List<UserDTO>> findAll() throws Exception;
+    RestResponse<UserDTO> findById(Long id) throws Exception;
+    RestResponse<UserDTO> active(Long id) throws Exception;
+    RestResponse<UserDTO> deactive(Long id) throws Exception;
+    RestResponse<List<UserDTO>> findAllOfDeactives() throws Exception;
 }
